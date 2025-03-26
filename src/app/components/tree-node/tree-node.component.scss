@@ -1,0 +1,31 @@
+/** За счет вложенности компонентов, каждый узел-потомок отображается с отступом */
+:host {
+  display: block;
+  margin-left: 30px;
+  min-width: max-content;
+}
+
+/** Данные узла (id-title) */
+.tree-node__content {
+  display: inline-block;
+  min-height: 32px;
+}
+
+/** Удаленный узел */
+.tree-node--deleted {
+  color: gray;
+}
+
+/** Узел-лист */
+.tree-node--leaf {
+  margin-left: 30px;
+}
+
+/** Кнопка раскрытия элементов узла **/
+.tree-node__expand-button {
+  font-size: 12px;
+  margin-right: 16px;
+}
+.tree-node__expand-button:hover {
+  cursor: pointer;
+}

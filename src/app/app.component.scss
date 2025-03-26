@@ -1,0 +1,40 @@
+.app-title {
+  display: block;
+  background-color: white;
+  padding: 24px;
+}
+
+.grid {
+  display: flex;
+  gap: 16px;
+}
+
+.grid--vertical-centered {
+  align-items: center;
+}
+
+.data-input {
+  width: 100%;
+  min-height: 600px;
+}
+
+.cell {
+  background: white;
+  border-radius: 4px;
+  width: 100%;
+  padding: 24px;
+  padding-top: 0px;
+}
+
+.cell--overflow-container {
+  overflow-y: scroll;
+  overflow-x: scroll;
+  height: 700px;
+  resize: vertical;
+}
+
+.invalid,
+.invalid:focus {
+  outline: solid red 3px;
+  border: solid red 1px;
+}

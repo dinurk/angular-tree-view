@@ -1,0 +1,23 @@
+<div
+  class="tree-node"
+  [ngClass]="{
+    'tree-node--deleted': node.is_deleted,
+    'tree-node--leaf': isLeaf
+  }"
+>
+  <ng-container *ngIf="!isLeaf">
+    <span (click)="expand()" class="tree-node__expand-button">
+      {{ expanded ? "⯅" : "⯆" }}
+    </span>
+  </ng-container>
+
+  <span class="tree-node__content">{{ `${node.id} - ${node.title}` }}</span>
+</div>
+
+<!-- Узлы-потомки -->
+<ng-container *ngIf="!isLeaf && expanded">
+  <app-tree-node
+    *ngFor="let node of node.children"
+    [node]="node"
+  ></app-tree-node>
+</ng-container>
