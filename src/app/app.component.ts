@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { TreeViewComponent } from './components/tree-view/tree-view.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ITreeNode } from '../interfaces';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent {
   /** Выносить получение данных в отдельный сервис не стал, т.к. по заданию этого не требовалось */
-  public data = [
+  public data: ITreeNode[] = [
     {
       id: 1,
       title: 'Значение 1',
@@ -109,8 +110,10 @@ export class AppComponent {
     },
   ];
 
+  public readonly exampleJson: string = `[ { "id": 3, "title": "Значение 1.1.1", ... } ]`;
+
   /** Строка с JSON, отображаемым в поле ввода */
-  public dataString: string | null = JSON.stringify(this.data, null, 2);
+  public dataString: string = JSON.stringify(this.data, null, 2);
 
   /** Обработчик изменения JSON-строки с данными */
   public onTreeDataChange(): void {
@@ -133,7 +136,7 @@ export class AppComponent {
 
   /** Очистить поле ввода и дерево */
   public clear(): void {
-    this.dataString = '';
+    this.dataString = '[]';
     this.data = [];
   }
 }

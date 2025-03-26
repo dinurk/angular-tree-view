@@ -8,4 +8,6 @@ export interface ITreeNode {
   is_deleted: boolean;
   /** Узлы - потомки */
   children: ITreeNode[];
+  /** Дата удаления узла */
+  deleted_at?: string | null;
 }

@@ -5,20 +5,29 @@
 <div class="grid">
   <div class="cell cell--overflow-container">
     <h3>Компонент дерева:</h3>
-    <ng-container *ngIf="data?.length; else invalidData">
+    <ng-container *ngIf="data.length; else invalidData">
       <app-tree-view [treeData]="data"></app-tree-view>
     </ng-container>
     <ng-template #invalidData>
-      <p>В поле "Данные" введен некорректный JSON</p>
+      <p>
+        В поле "Данные" указано дерево, не содержащее узлов, либо некорректный
+        JSON
+      </p>
       <p>Некоторые из возможных причин:</p>
       <ul>
         <li>Введена пустая стока</li>
         <li>Наличие висячих запятых</li>
         <li>
-          Отсутствие кавычек у ключа 
-          (Например, {{ '{ id: 1 } - неверно, { "id": 1 }' }} - верно)
+          Отсутствие кавычек у ключа (Например,
+          {{ '{ id: 1 } - неверно, { "id": 1 }' }} - верно)
         </li>
       </ul>
+
+      <p>
+        Обратите внимание: даже если дерево содержит ровно один корневой узел,
+        его нужно обернуть в массив
+      </p>
+      <p>Например: {{ exampleJson }}</p>
     </ng-template>
   </div>
   <div class="cell">
@@ -33,7 +42,7 @@
       class="data-input"
       [(ngModel)]="dataString"
       (ngModelChange)="onTreeDataChange()"
-      [ngClass]="{ invalid: data?.length === 0 }"
+      [ngClass]="{ invalid: data.length === 0 }"
     ></textarea>
   </div>
 </div>
