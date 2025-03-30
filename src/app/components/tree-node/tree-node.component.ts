@@ -1,4 +1,10 @@
-import { Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  signal,
+  WritableSignal,
+} from '@angular/core';
 import { ITreeNode } from '../../../interfaces';
 import { CommonModule } from '@angular/common';
 
@@ -8,6 +14,7 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   templateUrl: './tree-node.component.html',
   styleUrl: './tree-node.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TreeNodeComponent {
   /** Узел дерева, соотвествующий данному TreeNodeComponent */
@@ -15,7 +22,7 @@ export class TreeNodeComponent {
   public node!: ITreeNode;
 
   /** Ветка раскрыта */
-  public expanded: boolean = false;
+  public expanded: WritableSignal<boolean> = signal(false);
 
   /**
    * Компонент не содержит потомков
@@ -27,6 +34,6 @@ export class TreeNodeComponent {
 
   /** Показать/скрыть содержимое узла */
   public expand(): void {
-    this.expanded = !this.expanded;
+    this.expanded.update((value: boolean) => !value);
   }
 }

@@ -7,7 +7,7 @@
 >
   <ng-container *ngIf="!isLeaf">
     <span (click)="expand()" class="tree-node__expand-button">
-      {{ expanded ? "⯅" : "⯆" }}
+      {{ expanded() ? "⯅" : "⯆" }}
     </span>
   </ng-container>
 
@@ -15,7 +15,7 @@
 </div>
 
 <!-- Узлы-потомки -->
-<ng-container *ngIf="!isLeaf && expanded">
+<ng-container *ngIf="!isLeaf && expanded()">
   <app-tree-node
     *ngFor="let node of node.children"
     [node]="node"

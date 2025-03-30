@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { TreeViewComponent } from './components/tree-view/tree-view.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -7,7 +6,7 @@ import { ITreeNode } from '../interfaces';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, TreeViewComponent, FormsModule, CommonModule],
+  imports: [TreeViewComponent, FormsModule, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

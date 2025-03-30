@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ITreeNode } from '../../../interfaces';
 import { TreeNodeComponent } from '../tree-node/tree-node.component';
 
@@ -8,6 +8,7 @@ import { TreeNodeComponent } from '../tree-node/tree-node.component';
   imports: [TreeNodeComponent],
   templateUrl: './tree-view.component.html',
   styleUrl: './tree-view.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TreeViewComponent {
   /** Данные для отображения в дереве */
